@@ -71,28 +71,28 @@
         <h4 id ="require" class="require" >Please fill all mandatory fields</h4>
        <div class="item">
          <span class="label">First Name <span style ="color: red">*</span></span>
-          <input type="text" class="input" placeholder="Enter first name" value=""id="fname" >
+          <input type="text" class="input" placeholder="Enter first name" value=""id="fname"onblur="validateInput(fname)" >
         </div>
           <div class="item">
          <span class="label">Last Name <span style ="color: red">*</span></span>
-          <input type="text" class="input" placeholder="Enter last name" value=""id="lname">
+          <input type="text" class="input" placeholder="Enter last name" value=""id="lname"onblur="validateInput(lname)">
         </div>
           <div class="item">
          <span class="label">Email <span style ="color: red">*</span></span>
-          <input class="input" placeholder="Enter email" value="" id="email" />
+          <input class="input" placeholder="Enter email" value="" id="email" onblur="validateEmail(email)"/>
         </div>
          <h4 id="error_email" class ="require">Email không hợp lệ</h4>
         <div class="item">
             <span class="label">User Name <span style ="color: red">*</span></span>
-             <input type="text" class="input" placeholder="enter user name" value=""id="user_name">
+             <input type="text" class="input" placeholder="enter user name" value=""id="user_name"onblur="validateInput(user_name)">
           </div>
           <div class="item">
             <span class="label">Password <span style ="color: red">*</span></span>
-             <input type="password" class="input" placeholder="enter password"value=""id="password">
+             <input type="password" class="input" placeholder="enter password"value=""id="password"onblur="validateInput(password)">
           </div>
           <div class="item">
             <span class="label">Confirm Password <span style ="color: red">*</span></span>
-             <input type="password" class="input" placeholder="enter password again"value=""id="confirm_password">
+             <input type="password" class="input" placeholder="enter password again"value=""id="confirm_password"onblur="validatePasswordNotmatch(confirm_password)">
              
           </div>
           <h4 id="error_confirm" class ="require">Password not match</h4>
@@ -116,7 +116,7 @@
  </form> 
 </body>
 <script>
-   
+   var i = 0
 	const submit = document.getElementById("submit")
 	submit.addEventListener("click", validate);
 	const lname = document.getElementById("lname")
@@ -131,40 +131,65 @@
 	const error_email = document.getElementById("error_email")
 	
 	var patt = new RegExp(email_pattern);
-
-	function check(param) {
+	function validateInput(param) {
 		if(!param.value) {
 			param.classList.add("invalid");
-		}else param.classList.add("valid");
-	
+		}
+		else {
+			param.classList.add("valid");
+			require.style.display ='none'	
+		}
 	}
+	function validateEmail(param) {
+		if(param.value==''){
+			param.classList.add("invalid");
+		}
+	  	else if(!patt.test(param.value)){
+			param.classList.add("invalid");
+			error_email.style.display ='block'
+		}else {
+			error_email.style.display ='none'
+			param.classList.add("valid");
+			require.style.display ='none'
+			
+		}
+	}
+	function validatePasswordNotmatch(param) {
+		if(password.value !== confirm_password.value) {
+			error_confirm.setAttribute("style", "display: block;")
+			param.classList.add("invalid");
+		}else {
+			param.classList.add("valid");
+			error_confirm.setAttribute("style", "display: none;")
+			require.style.display ='none'
+			
+		}
+	} 
 	function validate(e) {
-		 
 		e.preventDefault();
 		if(!fname.value || !lname.value || !user_name.value|| !password.value || !email.value 
 				|| !confirm_password.value){
 			require.style.display ='block'
 		}
 		const arrayFields =[fname,lname,email,user_name,password,confirm_password]
+		const check = arrayFields.every((e) =>{
+			console.log(e.value)
+			return e.value != ''
+		})
 		
-		arrayFields.forEach(e => check(e))
-		if(password.value !== confirm_password.value) {
-			error_confirm.setAttribute("style", "display: block;")
-		}
-		if(!patt.test(email.value) && email.value !=''){
-			email.setAttribute("style", "border-color: red;")
-			error_email.style.display ='block'
-		}else {
+		if(check) {
+				i++;
+				const table = document.getElementById("list_user")
+				table.insertRow(i);
+				table.rows[i].insertCell(0);
+				table.rows[i].cells[0].innerHTML = i;
+					 for(var j = 1; j<5; j++) {
+						table.rows[i].insertCell(j);
+						table.rows[i].cells[j].innerHTML = arrayFields[j-1].value;
+					 }	  
+			}
+			
 		
-			const table = document.getElementById("list_user")
-			table.insertRow(i);
-			table.rows[i].insertCell(0);
-			table.rows[i].cells[0].innerHTML = i;
-				 for(var j = 1; j<5; j++) {
-					table.rows[i].insertCell(j);
-					table.rows[i].cells[j].innerHTML = arrayFields[j-1].value;
-				 }	  
-		}
 		
 		
 		
