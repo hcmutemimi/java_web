@@ -173,7 +173,6 @@
 		}
 		const arrayFields =[fname,lname,email,user_name,password,confirm_password]
 		const check = arrayFields.every((e) =>{
-			console.log(e.value)
 			return e.value != ''
 		})
 		
@@ -188,11 +187,6 @@
 						table.rows[i].cells[j].innerHTML = arrayFields[j-1].value;
 					 }	  
 			}
-			
-		
-		
-		
-		
 	}
 	
 </script>
