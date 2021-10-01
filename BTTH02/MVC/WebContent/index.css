@@ -1,0 +1,44 @@
+
+.loginform{
+        border: 0.5px solid red;
+        padding: 20px 30px 20px 30px;
+        width: 520px;
+        position: static;
+        font-size: 40px
+        
+      }
+      .registerform{
+        border: 0.5px solid red;
+       padding: 20px 30px 20px 30px;
+        width:520px;
+        font-size: 40px
+      }
+      .register{
+        
+        position: absolute;
+        right:0;
+        top:0;
+          padding: 0 20px 0 0;
+      }
+       
+        
+      
+      h1 {
+    font-size: 50px;
+        margin: 10px 0 15px;
+        }
+      #a{
+        margin: 5px 0 10px;
+      }
+      #b{
+        width: 500px;
+        height: 55px;
+        margin: 5px 0 10px;
+      }
+         
+      #c{
+        width: 245px;
+         height: 55px;
+        margin: 5px 0 10px;
+      }
+         
