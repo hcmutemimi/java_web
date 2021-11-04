@@ -38,7 +38,9 @@
 </style>
 <body>
 <%-- <b><% int accountNumber = Integer.parseInt(request.getParameter("id")); %></b> --%>
- <sql:setDataSource var="mysql" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/company" user="root" password="16110152"/>
+ <sql:setDataSource var="mysql" driver="com.mysql.jdbc.Driver" 
+ scope="session"
+ url="jdbc:mysql://localhost:3306/company" user="root" password="16110152"/>
 <sql:query dataSource="${mysql}" var="result">
 	SELECT*FROM Employees where id = ?;
 	 <sql:param value="${param.id}" /> 

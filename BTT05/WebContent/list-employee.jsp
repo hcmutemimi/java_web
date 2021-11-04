@@ -33,7 +33,7 @@ height: calc(100vh - 19.2vh);
 </style>
 </head>
 <body>
-<%@include file = "header.jsp" %>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="wrapper">
 <div class="content">
 <h2>List employees</h2>

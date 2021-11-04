@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<%@include file = "header.jsp" %>
+<jsp:include page="header.jsp"></jsp:include>
 
 <div class="content">
 <form action="Employee" method="post" >

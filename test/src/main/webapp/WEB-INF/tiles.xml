@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="main" template="/layout/main.jsp">
+		<put-attribute name="title" value="index" />
+		<put-attribute name="navbar" value="/layout/navbar.jsp" />
+		<put-attribute name="menu" value="/layout/menu.jsp" />
+		<put-attribute name="body" value="/layout/body.jsp" />	
+	</definition>
+	
+	<definition name="main_admin" template="layout_admin/main_admin.jsp">
+		<put-attribute name="title_admin" value="admin" />
+		<put-attribute name="navbar_admin" value="/layout_admin/navbar_admin.jsp" />
+		<put-attribute name="menu_admin" value="/layout_admin/menu_admin.jsp" />
+		<put-attribute name="body_admin" value="/layout/body_admin.jsp" />	
+	</definition>
+
+	<!-- Home page -->
+	<definition name="home" extends="main">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="body" value="/views/home/home.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="main">
+		<put-attribute name="title" value="admin" />
+		<put-attribute name="body" value="/layout_admin/body_admin.jsp" />
+	</definition>
+	
+
+</tiles-definitions>

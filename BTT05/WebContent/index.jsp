@@ -14,7 +14,7 @@
 <body>
     <div class ="wrapper">
           <div class="content">
-            <form action ="Login" method ="post">
+            <form action ="home" method ="post">
             <h1>Login </h1> 
                 <div class="wrap-input">
                      <label>Username</label> <span style="color:red">*</span>

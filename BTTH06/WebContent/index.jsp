@@ -27,7 +27,7 @@ tr:nth-child(even) {
 </style>
 <body>
 
-<sql:setDataSource var="mysql" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/company" user="root" password="16110152"/>
+<sql:setDataSource var="mysql" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/company" scope="session" user="root" password="16110152"/>
 <sql:query dataSource="${mysql}" var="result">
 	SELECT*FROM Employees
 </sql:query>
